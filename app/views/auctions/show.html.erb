@@ -1,11 +1,26 @@
+<%= link_to "All Auctions", auctions_path %>
+
 <h1><%= @auction.title %></h1>
-<p><%= @auction.details %></p>
-<p><%= @auction.end_time %></p>
-<p><%= @auction.reserve_price %></p>
+Details: <p><%= @auction.details %></p>
+End Time: <p><%= @auction.end_time %></p>
+Reserve: <p><%= @auction.reserve_price %></p>
+<hr>
+<h2>Highest bid</h2>
+<p><%= @highest_bid.amount %></p>
+
 
 <h2>Make a Bid</h2>
 
 <%= form_for [@auction, @bid] do |f| %>
   <%= f.number_field :amount %>
   <%= f.submit %>
+<% end %>
+
+<h2>Previous Bids</h2>
+
+<% @bids.each do |bid| %>
+  <%= link_to( bid.user.email, user_path(bid.user) ) %><br>
+  <%= bid.amount %><br>
+  <%= bid.created_at %>
+  <hr>
 <% end %>

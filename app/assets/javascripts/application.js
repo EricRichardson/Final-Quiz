@@ -17,5 +17,7 @@
 //= require jquery.ui.datepicker
 
 $(document).ready(function(){
-  $('#datepicker').datepicker();
+  $('#datepicker').datepicker({
+    format: 'yyyy-mm-dd'
+  });
 })

@@ -1,0 +1,6 @@
+<h1><%= @user.email %>'s bids</h1>
+
+<% @bids.each do |bid| %>
+  <%= link_to( bid.auction.title, auction_path(bid.auction)) %>
+  <%= bid.amount %>
+<% end %>
