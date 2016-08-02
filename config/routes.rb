@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
+  patch '/auctions/:id/publish' => 'auctions#publish', as: :publish
+  patch '/auctions/:id/cancel' => 'auctions#cancel', as: :cancel
 end

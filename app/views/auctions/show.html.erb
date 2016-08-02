@@ -4,10 +4,12 @@
 Details: <p><%= @auction.details %></p>
 End Time: <p><%= @auction.end_time %></p>
 Reserve: <p><%= @auction.reserve_price %></p>
+State: <%= @auction.aasm_state %>
 <hr>
 <h2>Highest bid</h2>
 <p><%= @highest_bid.amount %></p>
 
+<%= render "state_buttons" %>
 
 <h2>Make a Bid</h2>
 

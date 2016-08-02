@@ -1,6 +1,6 @@
 class AuctionsController < ApplicationController
-  before_action :find_auction, only: [:show]
-  before_action :authenticate_user!, only: [:create]
+  before_action :find_auction, only: [:show, :publish, :cancel]
+  before_action :authenticate_user!, only: [:create, :publish, :cancel]
 
   def new
     @auction = Auction.new
@@ -27,6 +27,18 @@ class AuctionsController < ApplicationController
 
   def index
     @auctions = Auction.all
+  end
+
+  def publish
+    @auction.publish
+    @auction.save
+    redirect_to @auction
+  end
+
+  def cancel
+    @auction.cancel
+    @auction.save
+    redirect_to @auction
   end
 
   private

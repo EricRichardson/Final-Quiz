@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802183625) do
+ActiveRecord::Schema.define(version: 20160802214030) do
 
   create_table "auctions", force: :cascade do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160802183625) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "highest_bid_id"
+    t.string   "aasm_state"
   end
 
   add_index "auctions", ["highest_bid_id"], name: "index_auctions_on_highest_bid_id"

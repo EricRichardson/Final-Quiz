@@ -1,0 +1,5 @@
+<% if @auction.aasm_state == "draft" %>
+  <%= link_to "Publish", publish_path(@auction), method: "PATCH" %>
+<% elsif @auction.aasm_state == "published" %>
+  <%= link_to "Cancel", cancel_path(@auction), method: "PATCH" %>
+<% end %>
