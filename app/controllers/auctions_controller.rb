@@ -10,7 +10,7 @@ class AuctionsController < ApplicationController
     @auction = Auction.new auction_params
     @auction.user = current_user
     initial_bid = Bid.create( amount: 0, auction: @auction, user: current_user )
-    @auction.highest_bid = initial_bid
+    @auction.highest_bid_id = initial_bid.id
     if @auction.save
       redirect_to @auction, notice: "Auction created"
     else

@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe AuctionsController, type: :controller do
+  before do
+    @user = create(:user)
+    sign_in @user
+  end
   describe "#new" do
     it "renders new_template" do
       get :new
@@ -15,13 +19,13 @@ RSpec.describe AuctionsController, type: :controller do
 
   describe "#create" do
     context "with valid paramaters" do
-      
+
       before do
         @user = create(:user)
       end
 
       def valid_request
-        post :create, {auction: build(:auction)}
+        post :create, auction: attributes_for(:auction)
       end
 
       it "saves the auction" do
